@@ -1,27 +1,45 @@
 # Ember-natural
 
-This README outlines the details of collaborating on this Ember addon.
+[natural-sdk](https://github.com/olivierlesnicki/natural-sdk) wrapped and bundled for ember-cli users.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-natural`
-* `npm install`
-* `bower install`
+* `ember install ember-natural`
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+To setup, you should first configure the service through config/environment:
 
-## Running Tests
+```js
+module.exports = function(environment) {
+  var ENV = {
+    natural: 'http://domain.ext' // Host of your Natural API
+  };
+}
+```
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+```js
+import Ember from 'ember';
 
-## Building
+const {
+  get,
+  inject: { service }
+} = Ember;
 
-* `ember build`
+export default Ember.Route.extend({
+  natural: service(),
+  model() {
+    return get(this, 'natural')
+      .dropdown('dQw4w9WgXcQ')
+      .send('I want to contact an agent.');
+  }
+});
+```
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+further docs: https://github.com/olivierlesnicki/
+
+### why is this wrapper needed?
+
+* original emits a global
+* original requires a Promise polyfil (ember users have RSVP)
+* original isn't Ember run-loop aware
