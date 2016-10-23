@@ -8,8 +8,7 @@
 
 ## Usage
 
-To setup, you should first configure the service through config/environment:
-
+To setup, you should first configure the service through `config/environment`:
 ```js
 module.exports = function(environment) {
   var ENV = {
@@ -18,6 +17,7 @@ module.exports = function(environment) {
 }
 ```
 
+Then use the `natural` service just like you would use the library.
 ```js
 import Ember from 'ember';
 
