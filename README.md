@@ -17,7 +17,7 @@ module.exports = function(environment) {
 }
 ```
 
-Then use the `natural` service just like you would use the library.
+Then inject the `natural` service and use it as documented [here](https://github.com/olivierlesnicki/).
 ```js
 import Ember from 'ember';
 
@@ -36,10 +36,8 @@ export default Ember.Route.extend({
 });
 ```
 
-further docs: https://github.com/olivierlesnicki/
+### Why is this wrapper needed?
 
-### why is this wrapper needed?
-
-* original emits a global
-* original requires a Promise polyfil (ember users have RSVP)
-* original isn't Ember run-loop aware
+* Original emits a global
+* Original requires a Promise polyfil (ember users have RSVP)
+* Original isn't Ember run-loop aware
